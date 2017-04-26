@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>thank_you</title>
+</head>
+<body>
+	Thank You
+	<hr>
+			{%if tweets_in_queue > 1 %}
+				there are {{tweets_in_queue}} tweets waiting for approval
+			{% else %}
+				your tweet is the only one waiting for approval
+			{% endif %}
+		
+</body>
+</html>

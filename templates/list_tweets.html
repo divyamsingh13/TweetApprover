@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>pending and published tweets</title>
+	<style type="text/css">
+		tr.evenrow{background: #ffffff;}
+		tr.oddrow{background: #dddddd;}
+	</style>
+</head>
+<body>
+<table>
+	<tr>
+		<td colspan=2 align=center>
+			<b>pending tweets</b>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			tweet text
+		</td>
+		<td>
+			submitted
+		</td>
+	</tr>
+	{% for tweet in pending_tweets %}
+	<tr class ="{% cycle 'oddrow' 'evenrow' %}">
+		<td>
+			<a href="/approve/review/{{tweet.id}}">{{tweet.text}}</a>
+		</td>
+		<td>
+			{{tweet.created_at|timesince}}  ago
+		</td>
+	</tr>
+	{%endfor%}
+</table>
+<hr>
+<table>
+	<tr>
+		<td colspan=2 align=center>
+			<b>Published tweets</b>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			tweet text
+		</td>
+		<td>
+			published
+		</td>
+	</tr>
+	{% for tweet in published_tweets %}
+	<tr class="{% cycle 'oddrow' 'evenrow' %}">
+	<td>
+		{{tweet.text}}
+	</td>
+	<td>
+		{{tweet.published_at|timesince}}  ago
+	</td>
+		</tr>
+		{% endfor %}
+</table>
+</body>
+</html>
